@@ -8,6 +8,7 @@ import Help  from '../pages/Help.jsx'
 import AddRecipe from '../pages/AddRecipe.jsx'
 const MainRoutes = () => {
   return (
+    
     <div className='flex-1'>
 <Routes>
     <Route path='/' element={<Home/>}></Route>
