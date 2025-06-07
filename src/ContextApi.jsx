@@ -4,8 +4,9 @@ import { createContext, useState } from 'react';
 export const CardsContext = createContext(null);
 
 const ContextApi = ({ children }) => {
-const recipes = [
-  {
+
+const [recipe, setrecipe] = useState([
+   {
     id: "iyhu66kjb",
     name: "Grilled Chicken Salad",
     image: "https://hips.hearstapps.com/hmg-prod/images/grilled-chicken-salad-index-6628169554c88.jpg?crop=0.6667863339915036xw:1xh;center,top&resize=1200:*",
@@ -115,12 +116,12 @@ const recipes = [
     tags: [ "high protein", "weight loss"],
     isHealthy: true
   }
-];
-
-const [userlikedRecipes, setlikedRecipes] = useState([])
+])
+const [likedRecipes, setlikedRecipes] = useState([])
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <CardsContext.Provider value={[recipes , userlikedRecipes , setlikedRecipes]}>
+    <CardsContext.Provider value={[recipe,setrecipe , likedRecipes , setlikedRecipes , searchTerm, setSearchTerm]}>
       {children}
     </CardsContext.Provider>
   );

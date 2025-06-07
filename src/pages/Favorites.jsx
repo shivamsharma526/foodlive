@@ -3,7 +3,7 @@ import {CardsContext} from '../ContextApi'
 import RecipeCardItem from '../components/RecipeCardItem'
 const Favorites = () => {
 
-  const [recipes,userlikedRecipes , setLikedRecipes] = useContext(CardsContext)
+  const [recipes,_,userlikedRecipes , setLikedRecipes] = useContext(CardsContext)
 const fillikes =  recipes.filter(e=> userlikedRecipes.includes(e.id))
   return (
     <div className='px-5 py-2'>

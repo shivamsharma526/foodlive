@@ -16,18 +16,18 @@ const tagIcons = {
   "low fat": <GiBodyBalance />,
 };
 
-const RecipeCardItem = ({ recipe }) => {
-  const [_, likedRecipes, setLikedRecipes] = useContext(CardsContext);
+const RecipeCardItem = ( {recipe }) => {
+  const [_, __, likedRecipes, setLikedRecipes] = useContext(CardsContext);
 
-  const isLiked = likedRecipes.includes(recipe.id);
+ const isLiked = likedRecipes.includes(recipe.id);
 
-  const toggleLike = () => {
-    setLikedRecipes(
-      isLiked
-        ? likedRecipes.filter((id) => id !== recipe.id)
-        : [...likedRecipes, recipe.id]
-    );
-  };
+const toggleLike = () => {
+  setLikedRecipes(
+    isLiked
+      ? likedRecipes.filter((id) => id !== recipe.id)
+      : [...likedRecipes, recipe.id]
+  );
+};
 
   return (
     <div className="bg-white p-4 rounded-2xl shadow hover:scale-105 transition">
@@ -39,8 +39,8 @@ const RecipeCardItem = ({ recipe }) => {
         />
         <div
           className={`${
-            isLiked ? "text-red-600 bg-white" : "bg-white text-black"
-          } w-8 h-8 flex justify-center items-center text-xl rounded-full absolute top-2 right-2 cursor-pointer`}
+    isLiked ? "text-red-600" : "text-gray-500"
+  } w-8 h-8 flex justify-center items-center text-xl rounded-full absolute top-2 right-2 cursor-pointer bg-white`}
           onClick={toggleLike}
         >
           <CiHeart />

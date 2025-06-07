@@ -2,14 +2,28 @@ import RecipeCardItem from "./RecipeCardItem";
 import { useContext } from "react";
 import { CardsContext } from "../ContextApi";
 
-const RecipeCard = () => {
-  const [recipe] = useContext(CardsContext);
+const RecipeCard = ({ recipes }) => {
+  const [allRecipes] = useContext(CardsContext);
 
-  const renderSection = (title, subtitle, type) => {
-    const filtered = recipe.filter((item) => item.type === type);
-
+  // If 'recipes' prop is passed, render only those recipes (search results)
+  if (recipes) {
+    if (recipes.length === 0) {
+      return <p className="mt-10 text-center text-gray-600">No recipes found</p>;
+    }
     return (
-      <div className="mt-10">
+      <div className="mt-10 grid grid-cols-4 gap-4 p-2">
+        {recipes.map((r) => (
+          <RecipeCardItem key={r.id} recipe={r} />
+        ))}
+      </div>
+    );
+  }
+
+  // Otherwise render grouped sections as before
+  const renderSection = (title, subtitle, type) => {
+    const filtered = allRecipes.filter((item) => item.type === type);
+    return (
+      <div className="mt-10" key={type}>
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-4xl font-semibold text-gray-800 capitalize">
@@ -21,8 +35,8 @@ const RecipeCard = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-4 p-2">
-          {filtered.map((r, i) => (
-            <RecipeCardItem key={i} recipe={r} />
+          {filtered.map((r) => (
+            <RecipeCardItem key={r.id} recipe={r} />
           ))}
         </div>
       </div>
