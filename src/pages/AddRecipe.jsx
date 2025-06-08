@@ -38,12 +38,13 @@ const onSubmit = (e) => {
  
 
   return (
-    <div className='px-5'>
+    <div className='flex-1 px-2'>
+      
       <h1 className='text-2xl capitalize font-bold'>create new recipe</h1>
-    <form action="" className="flex w-full gap-10" onSubmit={handleSubmit(onSubmit)}>
-        <div className="w-[35%] ">
+    <form action="" className="md:flex w-full gap-10" onSubmit={handleSubmit(onSubmit)}>
+        <div className="md:w-[50%] lg:w-[40%]">
         <p className='capitalize tracking-tighter text-gray-600  my-5'>recipe general information</p>
-<img src={imge} alt="" className='w-full aspect-3/1 rounded-2xl object-cover mb-4'  />
+<img src={imge} alt="" className=' aspect-3/1 rounded-2xl object-cover mb-4'  />
       <label htmlFor=""  className='capitalize tracking-tighter text-gray-900 font-bold'>recipe image url</label>
 <input type="text" {...register("image" , {required:true})} onChange={data} placeholder="image url" className={`w-full outline-none ps-1 rounded-md h-10 mt-2 mb-3 capitalize border-2 ${errors.image ? "border-red-500" : "border-black/30"}`}/>
       <label htmlFor=""  className='capitalize tracking-tighter text-gray-900 font-bold'>recipe name</label>
@@ -54,7 +55,7 @@ const onSubmit = (e) => {
       <input type="text" {...register('tags', {required:true})}  id="" placeholder='tags recipe' className={`w-full border-2 border-black/30 outline-none ps-1 rounded-md h-10 mt-2 mb-3 capitalize ${errors.tags ? "border-red-500" : "border-black/30"}`}/>
      
         </div>
-<div className="flex-1 bg-white">
+<div className="bg-white md:w-[50%] lg:flex-1">
 <p className='capitalize tracking-tighter text-gray-600  my-5'>recipe detail</p>
             <label htmlFor=""  className='capitalize tracking-tighter text-gray-900 font-bold'>ingredients</label>
     <textarea {...register('ingredients', {required:true})}  id="" className={`border-1 border-black w-full h-50 outline-none rounded-md ps-2 mt-2 ${errors.ingredients ? "border-red-500" : "border-black/30"}`} placeholder='ingredients'></textarea>
@@ -65,7 +66,7 @@ const onSubmit = (e) => {
   } `}/>
           <label className='capitalize tracking-tighter text-gray-900 font-bold'>type</label>
      
-      <div className="flex mt-2" onClick={tags}>
+      <div className="flex flex-wrap mt-2 gap-1" onClick={tags}>
         {["recommended", "more", "tranding"].map((type) => (
           <p
             key={type}
@@ -75,6 +76,7 @@ const onSubmit = (e) => {
           >
             <BsTagsFill /> {type}
           </p>
+          
         ))}
       </div>
             <input type="submit" value="save"  className="text-white bg-gray-900 w-1/2 mt-5 h-10 rounded-2xl text-xl capitalize"/>

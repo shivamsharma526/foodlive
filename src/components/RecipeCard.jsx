@@ -26,15 +26,15 @@ const RecipeCard = ({ recipes }) => {
       <div className="mt-10" key={type}>
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-4xl font-semibold text-gray-800 capitalize">
+            <h1 className="text-sm md:text-4xl font-semibold text-gray-800 capitalize">
               {title}
             </h1>
-            <p className="text-gray-500 font-bold capitalize mt-1">{subtitle}</p>
+            <p className="text-gray-500 font-bold capitalize mt-1 text-[10px] md:text-2xl">{subtitle}</p>
           </div>
-          <button className="text-black font-bold capitalize">More</button>
+          <button className="text-black font-bold capitalize text-sm md:text-xl">More</button>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 p-2">
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-4 md:p-2 mt-5 md:mt-0">
           {filtered.map((r) => (
             <RecipeCardItem key={r.id} recipe={r} />
           ))}
